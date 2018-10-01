@@ -65,17 +65,57 @@ class MainWindow(QMainWindow):
         self.nameLabel.setText('Reach:')
         self.reach_new = QLineEdit(self)
         self.reach_new.setPlaceholderText(str(self.reach))
-        self.reach_new.move(280, 20)
-        self.reach_new.resize(200, 32)
+        self.reach_new.move(350, 20)
+        self.reach_new.resize(120, 32)
         self.nameLabel.move(220, 20)
 
         self.stackLabel = QLabel(self)
         self.stackLabel.setText('Stack:')
         self.stack_new = QLineEdit(self)
         self.stack_new.setPlaceholderText(str(self.stack))
-        self.stack_new.move(280, 60)
-        self.stack_new.resize(200, 32)
+        self.stack_new.move(350, 60)
+        self.stack_new.resize(120, 32)
         self.stackLabel.move(220, 60)
+
+        self.chainLabel = QLabel(self)
+        self.chainLabel.setText('Chainstay len:')
+        self.chain_new = QLineEdit(self)
+        self.chain_new.setPlaceholderText(str(self.chainstay_len))
+        self.chain_new.move(350, 100)
+        self.chain_new.resize(120, 32)
+        self.chainLabel.move(220, 100)
+
+        self.wheelLabel = QLabel(self)
+        self.wheelLabel.setText('Wheelbase:')
+        self.wheel_new = QLineEdit(self)
+        self.wheel_new.setPlaceholderText(str(self.wheelbase))
+        self.wheel_new.move(350, 140)
+        self.wheel_new.resize(120, 32)
+        self.wheelLabel.move(220, 140)
+
+        self.seatlLabel = QLabel(self)
+        self.seatlLabel.setText('Seat tube len:')
+        self.seatl_new = QLineEdit(self)
+        self.seatl_new.setPlaceholderText(str(self.seat_tube_len))
+        self.seatl_new.move(350, 180)
+        self.seatl_new.resize(120, 32)
+        self.seatlLabel.move(220, 180)
+
+        self.seataLabel = QLabel(self)
+        self.seataLabel.setText('Seat tube ang:')
+        self.seata_new = QLineEdit(self)
+        self.seata_new.setPlaceholderText(str(self.seat_tube_angle))
+        self.seata_new.move(350, 220)
+        self.seata_new.resize(120, 32)
+        self.seataLabel.move(220, 220)
+
+        self.htubeaLabel = QLabel(self)
+        self.htubeaLabel.setText('Head tube ang:')
+        self.htubea_new = QLineEdit(self)
+        self.htubea_new.setPlaceholderText(str(self.head_tube_angle))
+        self.htubea_new.move(350, 260)
+        self.htubea_new.resize(120, 32)
+        self.htubeaLabel.move(220, 260)
 
 
         pybutton3 = QPushButton('Update GEO', self)
@@ -92,13 +132,42 @@ class MainWindow(QMainWindow):
             stack_n = self.stack
         else:
             stack_n = float(self.stack_new.text())
+        if self.chain_new.isModified()==False:
+            chain_n = self.chainstay_len
+        else:
+            chain_n = float(self.chain_new.text())
+        if self.wheel_new.isModified()==False:
+            wheel_n = self.wheelbase
+        else:
+            wheel_n = float(self.wheel_new.text())
+        if self.seatl_new.isModified()==False:
+            seatl_n = self.seat_tube_len
+        else:
+            seatl_n = float(self.seatl_new.text())
+        if self.seata_new.isModified()==False:
+            seata_n = self.seat_tube_angle
+        else:
+            seata_n = float(self.seata_new.text())
+        if self.htubea_new.isModified()==False:
+            htubea_n = self.head_tube_angle
+        else:
+            htubea_n = float(self.htubea_new.text())
 
         print('====> NEW GEO:' \
         + '\n reach = ' + str(reach_n) \
-        + '\n stack = ' + str(stack_n))
+        + '\n stack = ' + str(stack_n) \
+        + '\n chainstay lenght = ' + str(chain_n) \
+        + '\n wheelbase = ' + str(wheel_n) \
+        + '\n seat tube length = ' + str(seatl_n) \
+        + '\n seat tube angle = ' + str(seata_n)  \
+        + '\n head tube angle = ' + str(htubea_n))
         self.reach = reach_n
         self.stack = stack_n
-
+        self.chainstay_len = chain_n
+        self.wheelbase = wheel_n
+        self.seat_tube_len = seatl_n
+        self.seat_tube_angle = seata_n
+        self.head_tube_angle = htubea_n
 
     def UltimateGeo(self):
         self.seat_tube_len = 520
